@@ -29,7 +29,7 @@ int main(int argc, char **argv){
 	else{
 		// All arguments should be converted to integers
 		int M = atoi(argv[1]);
-		printf("%d\n", M);
+		// printf("%d\n", M);
 		int N = atoi(argv[2]);
 		int seed = atoi(argv[3]);
 		srand((unsigned) seed); //time( NULL )
@@ -87,8 +87,23 @@ int main(int argc, char **argv){
 
 		printf("RESULT:\n");
 		start = clock();
-
-		
+	    // Iterate over rows of mat1
+	    // printf("%d\n", sizeof(matrix_array1)/sizeof(matrix_array1[0])/sizeof(matrix_array1[0][0]));
+	    // printf("%d\n", sizeof(matrix_array1[0]));
+	    for(int i = 0; i < M; i++){
+	        // Iterate over columns of mat2:
+	        for(int j = 0; j < M; j++){
+	            // Iterate over rows of mat2:
+	            for(int k = 0; k < N; k++){
+	                matrix_array_result[i][j] = matrix_array_result[i][j] + matrix_array1[i][k] * matrix_array2[k][j];
+	            }
+                if(j == M-1){
+            		printf("%d\n",matrix_array_result[i][j]);
+                }else{
+                	printf("%d ",matrix_array_result[i][j]);
+                }
+	        }
+	    }
 		// printf("%d\n", rand()%100);
 		// mat1 = [[random.randrange(100) for i in range(M)] for j in range(N)];
 		// for(int i=0; i<1000000; i++){
